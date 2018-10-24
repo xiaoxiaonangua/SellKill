@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seckill.dao.SeckillDao">
+	<!-- 目的：为DAO接口方法提供sql语句配置 -->
+
+	<sql id="normal_list">
+		seckill_id,name,number,start_time,end_time,create_time
+	</sql>
+	<update id="reduceNumber">
+		<!-- 具体的sql -->
+		update
+		seckill
+		set
+		number = number -1
+		where seckill_id = #{seckillId}
+		and
+		start_time <![CDATA[ <= ]]>
+		#{killTime}
+		and end_time >= #{killTime}
+		and number >0
+	</update>
+
+	<select id="queryById" resultType="Seckill">
+		select
+		<include refid="normal_list" />
+		from seckill
+		where seckill_id = #{seckillId}
+	</select>
+
+	<select id="queryByPage" resultType="Seckill">
+		select
+		<include refid="normal_list" />
+		from seckill
+		order by seckill_id desc
+	</select>
+
+	<!-- mybatis调用存储过程 调用过程 与教程所讲有出入 可能因为mybatis版本问题，教程所用的方式会报错 unknow escape 
+		sequence -->
+	<parameterMap id="seckillParameterMap"
+		type="java.util.Map">
+		<parameter property="seckillId" jdbcType="BIGINT" mode="IN" />
+		<parameter property="phone" jdbcType="BIGINT" mode="IN" />
+		<parameter property="killTime" jdbcType="TIMESTAMP"
+			mode="IN" />
+		<parameter property="result" jdbcType="INTEGER" mode="OUT" />
+	</parameterMap>
+	<!-- 以下写法会出错 call `seckill`.`execute_seckill` -->
+	<select id="seckillViaStoredProcedure" statementType="CALLABLE"
+		parameterMap="seckillParameterMap">
+		{ call seckill.execute_seckill( ?, ?, ?, ? ) }
+	</select>
+
+</mapper>

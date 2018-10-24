@@ -1,0 +1,58 @@
+package org.seckill.dto;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
+/**
+ * @author Daniel.Zhang
+ * @email daniel.zhang.china@hotmail.com
+ * @created on 2018-06-29
+ * 
+ *
+ */
+// ·â×°json½á¹û
+public class SeckillResult<T> {
+
+	private boolean success;
+
+	private T data;
+
+	private String error;
+
+	public SeckillResult(boolean success, T data) {
+		// super();
+		this.success = success;
+		this.data = data;
+	}
+
+	public SeckillResult(boolean success, String error) {
+		// super();
+		this.success = success;
+		this.error = error;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+}
