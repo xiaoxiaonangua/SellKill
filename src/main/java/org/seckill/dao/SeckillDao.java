@@ -7,21 +7,25 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Seckill;
 
+
+/**
+ *
+ */
 public interface SeckillDao {
 
 	/*
-	 * ¼õ¿â´æ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param seckillId
 	 * 
 	 * @param killTime
 	 * 
-	 * @return Èç¹ûÓ°ÏìĞĞÊı´óÓÚµÈÓÚ1£¬±íÊ¾¸üĞÂµÄ¼ÇÂ¼ĞĞÊı
+	 * @return ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÂµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	 */
 	int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
 	/*
-	 * ¸ù¾İid²éÑ¯ÃëÉ±¶ÔÏó
+	 * ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param sdckillId
 	 * 
@@ -30,10 +34,10 @@ public interface SeckillDao {
 	Seckill queryById(@Param("seckillId") long seckillId);
 
 	/*
-	 * ²éÑ¯ÃëÉ±ÉÌÆ·ÁĞ±í£¬·ÖÒ³
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½Æ·ï¿½Ğ±ï¿½ï¿½ï¿½Ò³
 	 *
-	 * ´Ë´¦ÓĞÒ»¸öÔ¼¶¨£ºMapÖĞ±ØĞë´æÔÚÒ»¸ö ¼üÃûÎª 'pagination' µÄ org.seckill.entity.Pagination
-	 * µÄÊµÌåÀ´´æ·Å·ÖÒ³ĞÅÏ¢ Èç¹ûÒªÊ¹ÓÃ @ParamÀ´×¢½âÕâ¸öMap²ÎÊı,ÄÇÃ´ËüµÄÃû³Æ±ØĞëÓëÏà¹ØµÄxmlÖĞµÄ·½·¨IDÍ¬Ãû£¬Ò²¼´Óë±¾·½·¨Í¬Ãû
+	 * ï¿½Ë´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Mapï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Îª 'pagination' ï¿½ï¿½ org.seckill.entity.Pagination
+	 * ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½Ò³ï¿½ï¿½Ï¢ ï¿½ï¿½ï¿½ÒªÊ¹ï¿½ï¿½ @Paramï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Mapï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½xmlï¿½ĞµÄ·ï¿½ï¿½ï¿½IDÍ¬ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ë±¾ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½
 	 * 
 	 * @param queryByPage
 	 * @return
@@ -41,7 +45,7 @@ public interface SeckillDao {
 	List<Seckill> queryByPage(@Param("queryByPage") Map<String, Object> queryByPage);
 
 	/*
-	 * Ê¹ÓÃ´æ´¢¹ı³Ì Ö´ĞĞÃëÉ±
+	 * Ê¹ï¿½Ã´æ´¢ï¿½ï¿½ï¿½ï¿½ Ö´ï¿½ï¿½ï¿½ï¿½É±
 	 */
 	void seckillViaStoredProcedure(Map<String, Object> paramMap);
 
